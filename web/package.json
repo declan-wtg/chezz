@@ -11,14 +11,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@zodios/core": "^10.9.6",
     "nuxt": "^4.4.8",
-    "vue": "^3.5.39",
     "vue-router": "^5.1.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
     "openapi-zod-client": "^1.18.3",
-    "typescript": "^5.9.2"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.2",
+    "vue": "^3.5.40"
   }
 }
