@@ -11,13 +11,9 @@
                 <CheckCircleIcon v-if="state === 'Success'" class="size-6 text-green-400" aria-hidden="true" />
                 <XCircleIcon v-else-if="state === 'Fail'" class="size-6 text-red-400" aria-hidden="true" />
               </div>
-              <div v-if="state === 'Success'" class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-white">Friend Request Sent</p>
-                <p class="mt-1 text-sm text-gray-400">Sent a friend request to {{ usernameRef }}</p>
-              </div>
-              <div v-else-if="state === 'Fail'" class="ml-3 w-0 flex-1 pt-0.5">
-                <p class="text-sm font-medium text-white">Friend Request Failed</p>
-                <p class="mt-1 text-sm text-gray-400">Failed to send a friend request to {{ usernameRef }}</p>
+              <div class="ml-3 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-white">{{ titleRef }}</p>
+                <p class="mt-1 text-sm text-gray-400">{{ contentRef }}</p>
               </div>
               <div class="ml-4 flex shrink-0">
                 <button type="button" @click="show = false" class="inline-flex rounded-md text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
@@ -39,18 +35,23 @@ import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 
 const show = ref(false)
-const usernameRef = ref("");
+const titleRef = ref("");
+const contentRef = ref("");
 
 const state: Ref<"Success" | "Fail"> = ref("Success");
 
-function succeed(username: string) {
-  usernameRef.value = username;
+function succeed(title: string, content: string) {
+  titleRef.value = title;
+  contentRef.value = content;
+
   state.value = "Success";
   show.value = true;
 }
 
-function fail(username: string) {
-  usernameRef.value = username;
+function fail(title: string, content: string) {
+  titleRef.value = title;
+  contentRef.value = content;
+
   state.value = "Fail";
   show.value = true;
 }

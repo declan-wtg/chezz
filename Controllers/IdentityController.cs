@@ -197,18 +197,18 @@ namespace Chezz.Controllers
 
         [HttpPost("forgotPassword", Name = "ForgotPassword")]
         public async Task<Results<Ok, ValidationProblem>> ForgotPassword(
-            [FromBody] ForgotPasswordRequest resetRequest,
+            [FromBody] Chezz.RequestSchemas.Identity.ForgotPasswordRequest resetRequest,
             [FromServices] IServiceProvider sp)
         {
             var userManager = sp.GetRequiredService<UserManager<ChezzUser>>();
-            var user = await userManager.FindByEmailAsync(resetRequest.Email);
+            var user = await userManager.FindByNameAsync(resetRequest.Username);
 
             if (user is not null && await userManager.IsEmailConfirmedAsync(user))
             {
                 var code = await userManager.GeneratePasswordResetTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
-                await emailSender.SendEmailAsync(resetRequest.Email, "Reset your password", $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(code)}'>clicking here</a>. If you didn't request a password reset, you can ignore this email.");
+                await emailSender.SendEmailAsync(user.Email!, "Reset your password", $"Please reset your password by <a href='http://localhost:3000/reset-password/{HtmlEncoder.Default.Encode(code)}'>clicking here</a>. If you didn't request a password reset, you can ignore this email.");
             }
 
             // Don't reveal that the user does not exist or is not confirmed, so don't return a 200 if we would have

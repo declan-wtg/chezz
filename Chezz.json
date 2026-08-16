@@ -1204,11 +1204,11 @@
       },
       "ForgotPasswordRequest": {
         "required": [
-          "email"
+          "username"
         ],
         "type": "object",
         "properties": {
-          "email": {
+          "username": {
             "type": "string",
             "nullable": true
           }

@@ -56,7 +56,7 @@ const RefreshRequest = z.object({ refreshToken: z.string().nullable() });
 const ResendConfirmationEmailRequest = z.object({
   email: z.string().nullable(),
 });
-const ForgotPasswordRequest = z.object({ email: z.string().nullable() });
+const ForgotPasswordRequest = z.object({ username: z.string().nullable() });
 const ResetPasswordRequest = z.object({
   email: z.string().nullable(),
   resetCode: z.string().nullable(),
@@ -318,7 +318,7 @@ const endpoints = makeApi([
       {
         name: "body",
         type: "Body",
-        schema: z.object({ email: z.string().nullable() }),
+        schema: z.object({ username: z.string().nullable() }),
       },
     ],
     response: z.void(),

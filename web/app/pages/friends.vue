@@ -130,10 +130,10 @@ async function addFriend(username: string) {
     username: username
     });
 
-    friendNotification.value.succeed(username);
+    friendNotification.value.succeed("Friend Request Sent", `Successfully sent a friend request ${username}.`);
   }
   catch {
-    friendNotification.value.fail(username);
+    friendNotification.value.fail("Friend Request Failed", `Failed to send a friend request to ${username}.`);
   }
 }
 </script>

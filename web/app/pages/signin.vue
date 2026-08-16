@@ -53,8 +53,8 @@
                                 </div>
 
                                 <div class="text-sm/6">
-                                    <a href="#" class="font-semibold text-blue-400 hover:text-blue-300">Forgot
-                                        password?</a>
+                                    <NuxtLink href="/forgot-password" class="font-semibold text-blue-400 hover:text-blue-300">Forgot
+                                        password?</NuxtLink>
                                 </div>
                             </div>
 
