@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // NUXT_PUBLIC_WS_ENDPOINT
-      wsEndpoint: "/",
+      wsEndpoint: "http://localhost:5281/",
     },
   },
   nitro: {
